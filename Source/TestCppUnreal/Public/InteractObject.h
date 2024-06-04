@@ -5,6 +5,7 @@
 #include "InteractObject.generated.h"
 
 
+
 UCLASS(BlueprintType, Category="MyGame")
 class AInteractObject : public AActor, public IReactToTriggerInterface
 {
@@ -16,13 +17,14 @@ class AInteractObject : public AActor, public IReactToTriggerInterface
 public:
 	AInteractObject();
 	
+	
+	
 	virtual void BeginPlay() override;
 	virtual void Tick(float DeltaTime) override;
 
 	
 	// Blueprint Native Event override
 	virtual bool ReactToTrigger_Implementation() override;
-
 	virtual void TestInterfaceCall_Implementation() override;
 
 	UFUNCTION()

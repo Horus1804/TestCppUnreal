@@ -51,9 +51,13 @@ class ATestCppUnrealCharacter : public ACharacter
 	/** Look Input Action */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
 	UInputAction* LookAction;
-	// Add interact input
+	/** Add interact input */
 	UPROPERTY(EditAnywhere,BlueprintReadOnly,Category = Input, meta = (AllowPrivateAccess = "true"))
 	UInputAction* InteractAction;
+
+	/** Add move platform input */
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
+	UInputAction* Move_PlatformAction;
 
 public:
 	ATestCppUnrealCharacter();
@@ -68,9 +72,13 @@ protected:
 
 	/** Called for looking input */
 	void Look(const FInputActionValue& Value);
-	
+
+	/** Called for Grab/Release input */
 	void Grab(const FInputActionValue& Value);
 	void Release(const FInputActionValue& Value);
+
+	/** Called for Move_Platform input */
+	void MovePlatform(const FInputActionValue& Value);
 			
 
 protected:

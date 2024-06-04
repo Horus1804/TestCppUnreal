@@ -115,8 +115,11 @@ void ATestCppUnrealCharacter::SetupPlayerInputComponent(UInputComponent* PlayerI
 		// Looking
 		EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &ATestCppUnrealCharacter::Look);
 
+		// Interacting with objects (Grabbing and Releasing)
 		EnhancedInputComponent->BindAction(InteractAction, ETriggerEvent::Started, this, &ATestCppUnrealCharacter::Grab );
 		EnhancedInputComponent->BindAction(InteractAction, ETriggerEvent::Completed, this, &ATestCppUnrealCharacter::Release );
+
+		EnhancedInputComponent->BindAction(Move_PlatformAction, ETriggerEvent::Started, this, &ATestCppUnrealCharacter::MovePlatform);
 	}
 	else
 	{
@@ -185,4 +188,10 @@ void ATestCppUnrealCharacter::Release(const FInputActionValue& Value)
 	
 	OnGrabbedObjectDelegate.Broadcast(false);
 	PhysicsHandlerComp->ReleaseComponent();
+}
+
+void ATestCppUnrealCharacter::MovePlatform(const FInputActionValue& Value)
+{
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Yellow, TEXT("CanMovePlatform"));
+	UE_LOG(LogTemp, Warning, TEXT("CanMovePlatform"));
 }
